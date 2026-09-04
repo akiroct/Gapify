@@ -1,6 +1,6 @@
 # Gapify
 
-Site institucional da Gapify, uma agência de criação de sites e soluções digitais.
+Site institucional da Gapify, uma agência de criação de sites prontos e soluções digitais para comércios de pequeno, médio e grande porte.
 
 ## Páginas
 
