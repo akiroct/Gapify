@@ -16,7 +16,7 @@
   --radius-lg: 24px;
   --radius-md: 18px;
   --radius-sm: 12px;
-  --container: min(1240px, calc(100% - 4rem));
+  --container: min(1440px, calc(100% - 5rem));
 }
 
 * {
@@ -166,8 +166,8 @@ textarea {
 
 .narrow-copy {
   max-width: 50rem;
-  margin: 0 auto;
-  text-align: center;
+  margin-left: 0;
+  text-align: left;
 }
 
 .hero-grid {
@@ -244,6 +244,8 @@ h3 {
   min-height: 22rem;
   display: grid;
   place-items: center;
+  justify-self: end;
+  width: 100%;
 }
 
 .dashboard-card {
@@ -354,8 +356,8 @@ h3 {
 
 .section-header {
   max-width: 40rem;
-  margin: 0 auto 4rem;
-  text-align: center;
+  margin: 0 0 4rem;
+  text-align: left;
 }
 
 .card-grid {
@@ -702,7 +704,7 @@ textarea {
   }
 
   .hero-grid {
-    grid-template-columns: 1.08fr 0.92fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   .hero-copy {
@@ -721,12 +723,29 @@ textarea {
     justify-content: flex-start;
   }
 
+  .section-header {
+    margin-left: 0;
+  }
+
   .card-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .pricing-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 959px) {
+  .narrow-copy,
+  .section-header {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .hero-visual {
+    justify-self: center;
   }
 }
 
