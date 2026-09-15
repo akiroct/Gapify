@@ -1,50 +1,29 @@
-# Gapify
+# Welcome to your Lovable project
 
-Site institucional da Gapify, uma agência de sites e páginas de vendas focados em clareza, performance e conversão.
+This project was built with [Lovable](https://lovable.dev).
 
-## Stack
+## Build with Lovable
 
-- React 19
-- TanStack Start e TanStack Router
-- TypeScript
-- Vite
-- Tailwind CSS
-- Lucide React
+Open your project in the [Lovable editor](https://lovable.dev) and keep building.
 
-## Rodando localmente
+- **Ship faster**: describe what you want to build and Lovable handles the code.
+- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
+- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
 
-Requisitos: Node.js 20+ e npm.
+## Development
 
-```bash
-npm install
+Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+
+```sh
+git clone <this-repository-url>
+cd <repository-name>
+npm i
 npm run dev
 ```
 
-O servidor de desenvolvimento fica disponível em `http://localhost:8080` ou na próxima porta livre.
+## Built with
 
-## Scripts
-
-```bash
-npm run dev       # inicia o desenvolvimento
-npm run build     # gera o build de produção
-npm run preview   # visualiza o build localmente
-npm run lint      # executa o ESLint
-```
-
-## Estrutura
-
-```text
-src/
-	assets/          imagens utilizadas pelo site
-	components/      layout, navegação e componentes reutilizáveis
-	routes/          páginas Home, Sobre, Serviços e Contato
-	lib/             utilitários e tratamento de erros do servidor
-	styles.css       tokens de design e estilos globais
-```
-
-## Páginas
-
-- `/` — apresentação da Gapify e pacotes
-- `/sobre` — missão, visão e forma de trabalho
-- `/servicos` — serviços e perguntas frequentes
-- `/contato` — formulário de orçamento
+- TanStack Start
+- TypeScript
+- React
+- Tailwind CSS

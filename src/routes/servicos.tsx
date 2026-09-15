@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import {
-  ArrowRight,
+  Plus,
   LayoutTemplate,
   Building2,
   Gauge,
@@ -10,6 +11,12 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SiteLayout, PageHero } from "@/components/site/SiteLayout";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export const Route = createFileRoute("/servicos")({
   head: () => ({
@@ -36,32 +43,38 @@ const services = [
   {
     icon: LayoutTemplate,
     title: "Landing pages de conversão",
-    text: "Páginas com mensagem direta, prova social e chamada para ação clara, feitas para transformar visita em contato.",
+    teaser: "Uma página, um objetivo: transformar visita em contato.",
+    text: "Mensagem direta, prova social e uma chamada para ação que não deixa dúvida sobre o próximo passo — feita para campanhas e lançamentos.",
   },
   {
     icon: Building2,
     title: "Sites institucionais",
-    text: "Estrutura profissional para apresentar sua empresa, diferenciais e serviços com autoridade.",
+    teaser: "A apresentação completa da sua empresa, com autoridade.",
+    text: "Estrutura profissional para mostrar quem você é, o que oferece e por que confiar em você — organizada para quem está pesquisando antes de decidir.",
   },
   {
     icon: ShoppingBag,
     title: "Lojas e catálogos online",
-    text: "Vitrine organizada dos seus produtos, com fluxo simples até o pedido ou o WhatsApp.",
+    teaser: "Seus produtos organizados, do clique ao pedido.",
+    text: "Vitrine clara dos seus produtos, com um caminho simples até a compra ou o WhatsApp, sem etapas desnecessárias no meio do caminho.",
   },
   {
     icon: Gauge,
     title: "Performance e experiência",
-    text: "Sites leves, estáveis e agradáveis de usar em celular, tablet e computador.",
+    teaser: "Um site que abre rápido em qualquer aparelho.",
+    text: "Ajustes técnicos de carregamento e navegação para que a experiência seja igualmente boa no celular, no tablet e no computador.",
   },
   {
     icon: TrendingUp,
     title: "SEO e posicionamento",
-    text: "Estrutura e conteúdo otimizados para sua marca aparecer quando o cliente procura.",
+    teaser: "Para aparecer quando o cliente já está procurando.",
+    text: "Estrutura de conteúdo e metadados pensada para os buscadores entenderem do que se trata o seu negócio.",
   },
   {
     icon: Wrench,
     title: "Manutenção e evolução",
-    text: "Ajustes, novas seções e melhorias contínuas depois do lançamento, sem dor de cabeça.",
+    teaser: "Ajustes e novas seções, sem dor de cabeça.",
+    text: "Depois do lançamento, seguimos disponíveis para pequenos ajustes, novas seções e melhorias contínuas do site.",
   },
 ];
 
@@ -85,49 +98,76 @@ const faqs = [
 ];
 
 function Servicos() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
   return (
     <SiteLayout>
       <PageHero
-        eyebrow="Serviços"
         title="Soluções digitais que sustentam o crescimento do seu negócio."
         subtitle="Do primeiro site à otimização contínua, cada serviço é pensado para transformar sua comunicação em uma experiência clara, moderna e eficiente."
       />
 
-      <section className="py-24">
-        <div className="container-page grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map(({ icon: Icon, title, text }) => (
-            <article key={title} className="surface-panel hover-lift rounded-2xl p-7">
-              <div className="grid size-11 place-items-center rounded-xl bg-primary/15 text-primary">
-                <Icon className="size-5" />
-              </div>
-              <h2 className="mt-5 text-lg font-semibold">{title}</h2>
-              <p className="mt-2 text-sm text-muted-foreground">{text}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="border-y border-border bg-surface/30 py-24">
+      <section className="py-20">
         <div className="container-page">
-          <h2 className="text-3xl font-bold md:text-4xl">Perguntas frequentes</h2>
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
-            {faqs.map((faq) => (
-              <article key={faq.q} className="rounded-2xl border border-border p-6">
-                <h3 className="text-base font-semibold">{faq.q}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{faq.a}</p>
-              </article>
-            ))}
+          <div className="border-t border-border">
+            {services.map(({ icon: Icon, title, teaser, text }, i) => {
+              const open = openIndex === i;
+              return (
+                <div key={title} className="border-b border-border">
+                  <button
+                    type="button"
+                    onClick={() => setOpenIndex(open ? null : i)}
+                    aria-expanded={open}
+                    data-open={open}
+                    className="row-hover flex w-full items-center gap-5 px-1 py-6 text-left"
+                  >
+                    <Icon className="size-5 shrink-0 text-primary" />
+                    <span className="flex-1">
+                      <span className="block text-lg font-medium">{title}</span>
+                      <span className="block text-sm text-muted-foreground">{teaser}</span>
+                    </span>
+                    <Plus
+                      className={`size-4 shrink-0 text-muted-foreground transition-transform duration-300 ${
+                        open ? "rotate-45" : ""
+                      }`}
+                    />
+                  </button>
+                  <div
+                    className="grid transition-[grid-template-rows] duration-300 ease-out"
+                    style={{ gridTemplateRows: open ? "1fr" : "0fr" }}
+                  >
+                    <div className="overflow-hidden">
+                      <p className="max-w-2xl px-1 pb-6 pl-10 text-muted-foreground">{text}</p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section className="py-24">
+      <section className="border-y border-border bg-surface/50 py-20">
+        <div className="container-page">
+          <h2 className="text-3xl font-semibold md:text-4xl">Perguntas frequentes</h2>
+          <Accordion type="single" collapsible className="mt-8 max-w-2xl">
+            {faqs.map((faq) => (
+              <AccordionItem key={faq.q} value={faq.q}>
+                <AccordionTrigger className="text-base font-medium hover:no-underline">
+                  {faq.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">{faq.a}</AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </section>
+
+      <section className="py-20">
         <div className="container-page text-center">
-          <h2 className="text-3xl font-bold md:text-4xl">Vamos montar o seu projeto?</h2>
-          <Button asChild size="lg" className="mt-8">
-            <Link to="/contato">
-              Solicitar orçamento <ArrowRight className="size-4" />
-            </Link>
+          <h2 className="text-3xl font-semibold md:text-4xl">Vamos montar o seu projeto?</h2>
+          <Button asChild variant="stamp" size="lg" className="mt-8">
+            <Link to="/contato">Solicitar orçamento</Link>
           </Button>
         </div>
       </section>

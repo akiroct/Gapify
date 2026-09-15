@@ -78,17 +78,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Gapify | Sites de alto padrão" },
+      { title: "Gapify — páginas construídas para vender" },
       {
         name: "description",
         content:
-          "A Gapify cria sites e páginas de vendas rápidos, modernos e feitos para converter.",
+          "A Gapify projeta e constrói sites e páginas de vendas sob medida, pensados linha por linha para carregar rápido e converter visita em cliente.",
       },
       { name: "author", content: "Gapify" },
-      { property: "og:title", content: "Gapify | Sites de alto padrão" },
+      { property: "og:title", content: "Gapify — páginas construídas para vender" },
       {
         property: "og:description",
-        content: "Sites e páginas de vendas rápidos, modernos e feitos para converter.",
+        content:
+          "Sites e páginas de vendas sob medida, construídos para converter visita em cliente.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -98,7 +99,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:wght@400;500;600&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap",
       },
       {
         rel: "stylesheet",

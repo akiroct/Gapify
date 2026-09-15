@@ -5,18 +5,22 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Gapify design system — premium dark navy + gold.
- * All colors in oklch. Never hardcode colors in components.
+ * Gapify design system.
+ * Direction: an editorial, "print-shop for the web" identity —
+ * warm dark ink paper, a precise cobalt + a hot flare accent,
+ * Fraunces for voice/display, Inter for working text.
+ * Cards are reserved for things that are genuinely comparable products
+ * (pricing). Everything else reads as an index, a rail, or a list.
  */
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
+  --radius-sm: 0.35rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.5rem;
+  --radius-4xl: 2rem;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -39,6 +43,10 @@
   --color-ring-offset-background: var(--background);
   --color-surface: var(--surface);
   --color-surface-foreground: var(--surface-foreground);
+  --color-paper: var(--paper);
+  --color-paper-foreground: var(--paper-foreground);
+  --color-flare: var(--flare);
+  --color-flare-foreground: var(--flare-foreground);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -52,74 +60,73 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
-  --radius: 0.875rem;
+  --radius: 0.5rem;
 
-  --background: oklch(0.16 0.024 264);
-  --foreground: oklch(0.97 0.006 250);
+  /* Ink + Bone — the base duo */
+  --background: #14110d;
+  --foreground: #f3eee3;
 
-  --surface: oklch(0.21 0.028 264);
-  --surface-foreground: oklch(0.97 0.006 250);
+  --surface: #1c170f;
+  --surface-foreground: #f3eee3;
 
-  --card: oklch(0.21 0.028 264);
-  --card-foreground: oklch(0.97 0.006 250);
-  --popover: oklch(0.21 0.028 264);
-  --popover-foreground: oklch(0.97 0.006 250);
+  --card: #1c170f;
+  --card-foreground: #f3eee3;
+  --popover: #1a150e;
+  --popover-foreground: #f3eee3;
 
-  --primary: oklch(0.8 0.15 82);
-  --primary-foreground: oklch(0.19 0.03 264);
-  --primary-glow: oklch(0.89 0.13 92);
+  /* Cobalt — primary accent */
+  --primary: #3358ff;
+  --primary-foreground: #ffffff;
 
-  --secondary: oklch(0.26 0.03 264);
-  --secondary-foreground: oklch(0.97 0.006 250);
+  /* Flare — secondary accent, used sparingly */
+  --flare: #ff3d78;
+  --flare-foreground: #1a0410;
 
-  --muted: oklch(0.25 0.026 264);
-  --muted-foreground: oklch(0.72 0.02 258);
+  /* Paper — the one inverted, light beat in the page */
+  --paper: #f3eee3;
+  --paper-foreground: #16130d;
 
-  --accent: oklch(0.3 0.04 264);
-  --accent-foreground: oklch(0.97 0.006 250);
+  --secondary: #241f16;
+  --secondary-foreground: #f3eee3;
 
-  --destructive: oklch(0.62 0.21 25);
-  --destructive-foreground: oklch(0.98 0.003 248);
+  --muted: #211c14;
+  --muted-foreground: #a89d89;
 
-  --border: oklch(0.99 0 0 / 10%);
-  --input: oklch(0.99 0 0 / 14%);
-  --ring: oklch(0.8 0.15 82);
+  --accent: #262014;
+  --accent-foreground: #f3eee3;
 
-  --chart-1: oklch(0.8 0.15 82);
-  --chart-2: oklch(0.72 0.11 200);
-  --chart-3: oklch(0.68 0.13 150);
-  --chart-4: oklch(0.75 0.14 60);
-  --chart-5: oklch(0.6 0.1 280);
+  --destructive: #e5484d;
+  --destructive-foreground: #ffffff;
 
-  --sidebar: oklch(0.19 0.026 264);
-  --sidebar-foreground: oklch(0.97 0.006 250);
-  --sidebar-primary: oklch(0.8 0.15 82);
-  --sidebar-primary-foreground: oklch(0.19 0.03 264);
-  --sidebar-accent: oklch(0.26 0.03 264);
-  --sidebar-accent-foreground: oklch(0.97 0.006 250);
-  --sidebar-border: oklch(0.99 0 0 / 10%);
-  --sidebar-ring: oklch(0.8 0.15 82);
+  --border: color-mix(in oklab, #f3eee3 14%, transparent);
+  --input: color-mix(in oklab, #f3eee3 18%, transparent);
+  --ring: #3358ff;
 
-  --gradient-gold: linear-gradient(120deg, var(--primary), var(--primary-glow));
-  --gradient-surface: linear-gradient(
-    160deg,
-    color-mix(in oklab, var(--surface) 92%, transparent),
-    color-mix(in oklab, var(--background) 88%, transparent)
-  );
-  --gradient-glow: radial-gradient(
-    60% 60% at 50% 0%,
-    color-mix(in oklab, var(--primary) 22%, transparent),
-    transparent 70%
-  );
-  --shadow-elegant: 0 24px 60px -24px oklch(0 0 0 / 60%);
-  --shadow-glow: 0 0 0 1px color-mix(in oklab, var(--primary) 24%, transparent),
-    0 20px 50px -20px color-mix(in oklab, var(--primary) 35%, transparent);
-  --transition-smooth: 400ms cubic-bezier(0.22, 1, 0.36, 1);
+  --chart-1: #3358ff;
+  --chart-2: #ff3d78;
+  --chart-3: #2bb3a3;
+  --chart-4: #e8ac1e;
+  --chart-5: #9b7bff;
+
+  --sidebar: var(--surface);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--accent-foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+
+  --shadow-panel: 0 1px 0 color-mix(in oklab, #f3eee3 8%, transparent) inset,
+    0 20px 44px -28px rgb(0 0 0 / 70%);
+  --shadow-stamp: 4px 4px 0 0 var(--flare);
+  --shadow-stamp-sm: 3px 3px 0 0 var(--flare);
+  --transition-smooth: 380ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .dark {
@@ -143,88 +150,112 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
   }
 
   ::selection {
-    background: color-mix(in oklab, var(--primary) 35%, transparent);
+    background: color-mix(in oklab, var(--primary) 45%, transparent);
+    color: #fff;
   }
 }
+
+/* Layout */
 
 @utility container-page {
   width: 100%;
-  max-width: 90rem;
+  max-width: 72rem;
   margin-inline: auto;
-  padding-inline: 1rem;
-
-  @media (min-width: 640px) {
-    padding-inline: 2rem;
-  }
-
-  @media (min-width: 1024px) {
-    padding-inline: 3rem;
-  }
-
-  @media (min-width: 1280px) {
-    padding-inline: 4rem;
-  }
+  padding-inline: 1.25rem;
 }
 
-@utility text-gradient-gold {
-  background: var(--gradient-gold);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+@utility rule {
+  border-top: 1px solid var(--color-border);
 }
 
-@utility surface-panel {
-  background-image: var(--gradient-surface);
+/* A faint drafting grid — the literal medium this agency works in. */
+@utility grid-field {
+  background-image:
+    linear-gradient(color-mix(in oklab, var(--foreground) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in oklab, var(--foreground) 6%, transparent) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(65% 65% at 30% 20%, black, transparent 75%);
+}
+
+@utility panel {
+  background-color: var(--color-surface);
   border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-elegant);
-  backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-panel);
 }
 
-@utility glow-top {
-  background-image: var(--gradient-glow);
-}
-
-@utility hover-lift {
+@utility stamp-shadow {
+  box-shadow: var(--shadow-stamp);
   transition:
     transform var(--transition-smooth),
-    box-shadow var(--transition-smooth),
-    border-color var(--transition-smooth);
+    box-shadow var(--transition-smooth);
 
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-glow);
+  &:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 0 var(--flare);
   }
 }
 
-@keyframes rise-in {
+@utility row-hover {
+  position: relative;
+  transition: color var(--transition-smooth);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: color-mix(in oklab, var(--foreground) 5%, transparent);
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform var(--transition-smooth);
+  }
+
+  &:hover::before,
+  &[data-open="true"]::before {
+    transform: scaleX(1);
+  }
+}
+
+/* Motion: one deliberate entrance sequence for the hero, nothing scattered. */
+
+@keyframes line-in {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(0.6em);
+    clip-path: inset(0 0 100% 0);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+    clip-path: inset(0 0 0% 0);
   }
 }
 
-@utility animate-rise {
-  animation: rise-in 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+@utility animate-line-in {
+  animation: line-in 820ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-@keyframes float-soft {
-  0%,
-  100% {
-    transform: translateY(0);
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
   }
-  50% {
-    transform: translateY(-10px);
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
-@utility animate-float {
-  animation: float-soft 6s ease-in-out infinite;
+@utility animate-panel-in {
+  animation: panel-in 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-line-in,
+  .animate-panel-in {
+    animation: none !important;
+  }
 }

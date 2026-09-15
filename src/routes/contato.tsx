@@ -43,21 +43,20 @@ function Contato() {
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setSent(true);
-    toast.success("Pedido enviado! Responderemos em até 1 dia útil.");
+    toast.success("Pedido enviado! Respondemos em até 1 dia útil.");
   }
 
   return (
     <SiteLayout>
       <PageHero
-        eyebrow="Contato"
         title="Conte sobre o seu projeto e receba uma proposta."
         subtitle="Preencha o formulário com alguns detalhes do seu negócio. Respondemos normalmente em até 1 dia útil."
       />
 
-      <section className="py-24">
-        <div className="container-page grid gap-12 lg:grid-cols-[1fr_1.1fr]">
+      <section className="py-20">
+        <div className="container-page grid gap-12 lg:grid-cols-[1fr_1.2fr]">
           <div>
-            <h2 className="text-2xl font-bold">Fale direto com a gente</h2>
+            <h2 className="text-2xl font-semibold">Fale direto com a gente</h2>
             <ul className="mt-6 space-y-4 text-sm">
               <li className="flex items-center gap-3">
                 <Mail className="size-4 text-primary" />
@@ -87,10 +86,15 @@ function Contato() {
             </ul>
           </div>
 
-          <div className="surface-panel rounded-3xl p-7">
+          <div className="relative rounded-lg border border-border bg-surface p-7">
+            <div
+              className="absolute inset-x-0 top-0 h-0 border-t border-dashed border-border"
+              aria-hidden="true"
+            />
+            <p className="text-xs tracking-wide text-muted-foreground">Briefing do projeto</p>
             {sent ? (
-              <div className="py-10 text-center">
-                <div className="mx-auto grid size-12 place-items-center rounded-full bg-primary/15 text-primary">
+              <div className="py-14 text-center">
+                <div className="mx-auto grid size-12 place-items-center rounded-full border border-primary text-primary">
                   <Check className="size-6" />
                 </div>
                 <h2 className="mt-5 text-xl font-semibold">Recebemos seu pedido!</h2>
@@ -102,7 +106,7 @@ function Contato() {
                 </Button>
               </div>
             ) : (
-              <form className="grid gap-5" onSubmit={handleSubmit}>
+              <form className="mt-5 grid gap-5" onSubmit={handleSubmit}>
                 <div className="grid gap-2">
                   <Label htmlFor="nome">Nome</Label>
                   <Input id="nome" name="nome" placeholder="Seu nome" required />
@@ -162,7 +166,7 @@ function Contato() {
                   />
                 </div>
 
-                <Button type="submit" size="lg">
+                <Button type="submit" variant="stamp" size="lg">
                   Solicitar orçamento
                 </Button>
                 <p className="text-xs text-muted-foreground">
